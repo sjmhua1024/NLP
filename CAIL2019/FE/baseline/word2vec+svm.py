@@ -109,7 +109,9 @@ def train(type):
     print('train fasttext...')
     fasttext_model = train_fasttext(train_data)
 
-    vec = fasttext_model.transform(train_data)
+    vec = []
+    for word in train_data:
+        vec.append(fasttext_model.wv[word])
 
     print('tag SVC')
     tag = train_SVC(vec, tag_label)
@@ -117,6 +119,7 @@ def train(type):
     print('saving model')
     joblib.dump(fasttext_model, 'predictor/model_'+type+'/fasttext.model')
     joblib.dump(tag, 'predictor/model_'+type+'/tag_svc.model')
+
 
 # 主函数
 if __name__ == '__main__':

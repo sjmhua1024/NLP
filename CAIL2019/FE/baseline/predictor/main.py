@@ -9,7 +9,7 @@ class Predictor(object):
     # 参数： model_dir: 模型路径
     def __init__(self, model_dir):
         self.tfidf = joblib.load(model_dir + 'tfidf.model')
-        self.tag = joblib.load(model_dir + 'tag.model')
+        self.tag = joblib.load(model_dir + 'tag_gbdt.model')
         self.batch_size = 1
 
         self.cut = jieba

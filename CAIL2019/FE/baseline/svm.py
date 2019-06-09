@@ -144,6 +144,8 @@ if __name__ == '__main__':
     tfidf = train_tfidf(train_data)
 
     vec = tfidf.transform(train_data)
+    print(type(vec))
+    print(vec.shape)
 
     print('tag SVC')
     tag = train_SVC(vec, tag_label)
